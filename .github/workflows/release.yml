@@ -25,7 +25,6 @@ jobs:
           node-version: 18
           registry-url: "https://registry.npmjs.org"
           always-auth: true
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
       - name: Install NPM for Provenance
         run: npm install -g npm
       - name: Install Deps
@@ -35,4 +34,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
-        run: npm run semantic-release
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc && npm run semantic-release
