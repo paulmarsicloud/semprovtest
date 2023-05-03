@@ -25,6 +25,7 @@ jobs:
           node-version: 18
           registry-url: "https://registry.npmjs.org"
           always-auth: true
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
       - name: Install NPM for Provenance
         run: npm install -g npm
       - name: Install Deps
